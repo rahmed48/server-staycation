@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const { ObjectId } = mongoose.Schema;
 
 const itemSchema = new mongoose.Schema({
@@ -13,7 +12,6 @@ const itemSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    required: true,
     default: "Indonesia",
   },
   city: {
@@ -28,18 +26,30 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  unit: {
+    type: String,
+    default: "night",
+  },
+  sumBooking: {
+    type: Number,
+    default: 0,
+  },
   categoryId: {
     type: ObjectId,
-    ref: 'Category'
+    ref: "Category",
   },
-  imageId: [{
-    type: ObjectId,
-    ref: 'Image'
-  }],
-  featureId: [{
-    type: ObjectId,
-    ref: 'Feature'
-  }],
+  imageId: [
+    {
+      type: ObjectId,
+      ref: "Image",
+    },
+  ],
+  featureId: [
+    {
+      type: ObjectId,
+      ref: "Feature",
+    },
+  ],
   activityId: [
     {
       type: ObjectId,
