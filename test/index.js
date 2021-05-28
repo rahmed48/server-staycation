@@ -81,7 +81,7 @@ it('POST Booking Page', (done) => {
     .field('phoneNumber', dataSample.phoneNumber)
     .field('accountHolder', dataSample.accountHolder)
     .field('bankFrom', dataSample.bankFrom)
-    .attach('image', fs.readFileSync(dataSample.image), 'buktibayar.jpeg')
+    .attach('image', fs.readFileSync(dataSample.image), '1622192972592.jpeg')
     .end((err, res) => {
       expect(err).to.be.null
       expect(res).to.have.status(201)
