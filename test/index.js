@@ -7,8 +7,8 @@ const fs = require('fs');
 chai.use(chaiHttp);
 
 describe('API ENDPOINT TESTING', () => {
-  it('GET Landing Page', async () => {
-    await chai.request(app).get('/api/v1/member/landing-page').end((err, res) => {
+  it('GET Landing Page', (done) => {
+    chai.request(app).get('/api/v1/member/landing-page').end((err, res) => {
       expect(err).to.be.null
       expect(res).to.have.status(200)
       expect(res.body).to.be.an('object')
@@ -20,11 +20,12 @@ describe('API ENDPOINT TESTING', () => {
       expect(res.body.category).to.have.an('array')
       expect(res.body).to.have.property('testimonial')
       expect(res.body.testimonial).to.have.an('object')
+      done()
     })
   })
 
   it('GET Detail Page', (done) => {
-    chai.request(app).get('/api/v1/member/detail-page/5e96cbe292b97300fc902233').end((err, res) => {
+    chai.request(app).get('/api/v1/member/detail-page/5e96cbe292b97300fc902222').end((err, res) => {
       expect(err).to.be.null
       expect(res).to.have.status(200)
       expect(res.body).to.be.an('object')
@@ -57,7 +58,7 @@ describe('API ENDPOINT TESTING', () => {
     const image = __dirname + '/buktibayar.jpeg';
     const dataSample = {
       image,
-      idItem: '5e96cbe292b97300fc902233',
+      idItem: '5e96cbe292b97300fc902222',
       duration: 2,
       bookingStartDate: '9-4-2020',
       bookingEndDate: '11-4-2020',
