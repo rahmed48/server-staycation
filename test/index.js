@@ -7,8 +7,8 @@ const fs = require('fs');
 chai.use(chaiHttp);
 
 describe('API ENDPOINT TESTING', () => {
-  it('GET Landing Page', (done) => {
-    chai.request(app).get('/api/v1/member/landing-page').end((err, res) => {
+  it('GET Landing Page', async () => {
+    await chai.request(app).get('/api/v1/member/landing-page').end((err, res) => {
       expect(err).to.be.null
       expect(res).to.have.status(200)
       expect(res.body).to.be.an('object')
@@ -20,7 +20,6 @@ describe('API ENDPOINT TESTING', () => {
       expect(res.body.category).to.have.an('array')
       expect(res.body).to.have.property('testimonial')
       expect(res.body.testimonial).to.have.an('object')
-      done();
     })
   })
 
